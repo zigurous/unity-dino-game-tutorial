@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
             Destroy(obstacle.gameObject);
         }
 
+        score = 0f;
         gameSpeed = initialGameSpeed;
         enabled = true;
 
