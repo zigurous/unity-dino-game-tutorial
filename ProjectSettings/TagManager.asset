@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - Right
+  - Left
+  - Meteor
   layers:
   - Default
   - TransparentFX

@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField]
     private float leftEdge;
-    [SerializeField]
     private float rightEdge;
-    [SerializeField]
     private float downEdge;
 
     private void Start()
