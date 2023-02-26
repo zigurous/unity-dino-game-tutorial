@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public Button retryButton;
 
     private Player player;
-    private Spawner spawner;
+    private Spawner[] spawners;
 
     private Vector3 startPosition = new Vector3(-6, 0, 0);
 
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
-        spawner = FindObjectOfType<Spawner>();
+        spawners = FindObjectsOfType<Spawner>();
 
         NewGame();
     }
@@ -59,8 +59,26 @@ public class GameManager : MonoBehaviour
         gameSpeed = initialGameSpeed;
         enabled = true;
 
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            for (int j = 0; j < spawners[i].objects.Length; j++)
+            {
+                if (spawners[i].objects[j].prefab.name == "Bird" ||
+                    spawners[i].objects[j].prefab.name == "Meteor" ||
+                    spawners[i].objects[j].prefab.name == "Meteorite_01")
+                {
+                    spawners[i].objects[j].spawnChance = 0f;
+                }
+                
+            }
+        }
+
         player.gameObject.SetActive(true);
-        spawner.gameObject.SetActive(true);
+        foreach (Spawner spawner in spawners)
+        {
+            spawner.gameObject.SetActive(true);
+        }
+            
         gameOverText.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
 
@@ -74,7 +92,10 @@ public class GameManager : MonoBehaviour
 
         player.gameObject.SetActive(false);
         player.gameObject.transform.position = startPosition;
-        spawner.gameObject.SetActive(false);
+        foreach (Spawner spawner in spawners)
+        {
+            spawner.gameObject.SetActive(false);
+        }
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
 
@@ -84,8 +105,42 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         gameSpeed += gameSpeedIncrease * Time.deltaTime;
-        score += gameSpeed * Time.deltaTime;
+        score += gameSpeed * Time.deltaTime * 2f;
         scoreText.text = Mathf.FloorToInt(score).ToString("D5");
+
+        if (score >= 100)
+        {
+            for (int i = 0; i < spawners.Length; i++)
+            {
+                for (int j = 0; j < spawners[i].objects.Length; j++)
+                {
+                    if (spawners[i].objects[j].prefab.name == "Bird")
+                    {
+                        spawners[i].objects[j].spawnChance = 0.2f;
+                    }
+                }
+            }
+        }
+        if (score >= 200)
+        {
+            for (int i = 0; i < spawners.Length; i++)
+            {
+                for (int j = 0; j < spawners[i].objects.Length; j++)
+                {
+                    if (spawners[i].objects[j].prefab.name == "Meteor")
+                    {
+                        spawners[i].objects[j].spawnChance = 0.16f;
+                    }
+                    if (spawners[i].objects[j].prefab.name == "Meteorite_01")
+                    {
+                        spawners[i].objects[j].spawnChance = 0.2f;
+                    }
+                }
+            }
+
+        }
+
+
     }
 
     private void UpdateHiscore()
