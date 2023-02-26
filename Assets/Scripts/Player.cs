@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Left") || other.CompareTag("Right")) {
+        if (other.CompareTag("Left") || other.CompareTag("Right") || other.CompareTag("Meteor")) {
             FindObjectOfType<GameManager>().GameOver();
         }
     }

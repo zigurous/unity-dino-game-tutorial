@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
             if (spawnChance < obj.spawnChance)
             {
                 GameObject obstacle = Instantiate(obj.prefab);
-                obstacle.transform.position += transform.position;
+                obstacle.transform.position = transform.position;
                 
                 break;
             }
