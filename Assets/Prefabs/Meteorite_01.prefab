@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6471479376630255904}
   - component: {fileID: 6471479376630255911}
   - component: {fileID: 6471479376630255910}
-  - component: {fileID: 6471479376630255909}
   - component: {fileID: 9013874893999204867}
+  - component: {fileID: -3597318955098587094}
   m_Layer: 0
   m_Name: Meteorite_01
   m_TagString: Meteor
@@ -100,23 +100,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7087443, y: 0.61980504, z: 0.2}
   m_Center: {x: 0.0056279, y: -0.030058697, z: 0}
---- !u!114 &6471479376630255909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6471479376630255908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb41502d3ec58d44a9a54060ec6da3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: f203ac2fbc831e643bc30b16a834de47, type: 3}
-  - {fileID: 21300000, guid: 43e3104b70df199419280a20202deece, type: 3}
-  - {fileID: 21300000, guid: f1a6b3280bdbd1a4db0cc3f93068da1b, type: 3}
-  - {fileID: 21300000, guid: 379126e0e5390234eba7bef74193ccdd, type: 3}
 --- !u!114 &9013874893999204867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,3 +112,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa01bef04456d489a93b8adc7fec01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3597318955098587094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6471479376630255908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0a4a3e568691d40b504518f44a9e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []

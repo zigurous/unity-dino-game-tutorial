@@ -27,27 +27,14 @@ public class AnimatedSprite : MonoBehaviour
     {
         frame++;
 
-        if (Input.GetKey(KeyCode.S))
+        if (frame >= sprites.Length)
         {
+            frame = 0;
+        }
 
-            if (frame >= sprites.Length)
-            {
-                frame = 2;
-            }
-
-            if (frame >= sprites.Length - 2 && frame < sprites.Length)
-            {
-                spriteRenderer.sprite = sprites[frame];
-            }
-        } else
+        if (frame >= 0 && frame < sprites.Length)
         {
-            if (frame >= sprites.Length - 2) {
-                frame = 0;
-            }
-
-            if (frame >= 0 && frame < sprites.Length -2) {
-                spriteRenderer.sprite = sprites[frame];
-            }
+            spriteRenderer.sprite = sprites[frame];
         }
 
         Invoke(nameof(Animate), 1f / GameManager.Instance.gameSpeed);
