@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private Vector3 direction;
 
     public float jumpForce = 8f;
+    public float runForce = 5f;
     public float gravity = 9.81f * 2f;
 
     private void Awake()
@@ -30,6 +31,16 @@ public class Player : MonoBehaviour
             if (Input.GetButton("Jump")) {
                 direction = Vector3.up * jumpForce;
             }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                direction = Vector3.right * runForce;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                direction = Vector3.left * runForce;
+            }
         }
 
         character.Move(direction * Time.deltaTime);
@@ -37,7 +48,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle")) {
+        if (other.CompareTag("Left") || other.CompareTag("Right")) {
             FindObjectOfType<GameManager>().GameOver();
         }
     }

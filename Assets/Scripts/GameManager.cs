@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private Player player;
     private Spawner spawner;
 
+    private Vector3 startPosition = new Vector3(-6, 0, 0);
+
     private float score;
 
     private void Awake()
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
         enabled = false;
 
         player.gameObject.SetActive(false);
+        player.gameObject.transform.position = startPosition;
         spawner.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);

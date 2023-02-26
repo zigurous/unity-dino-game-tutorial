@@ -35,6 +35,7 @@ public class Spawner : MonoBehaviour
             {
                 GameObject obstacle = Instantiate(obj.prefab);
                 obstacle.transform.position += transform.position;
+                
                 break;
             }
 

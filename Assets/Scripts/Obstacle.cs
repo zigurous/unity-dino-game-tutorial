@@ -11,7 +11,15 @@ public class Obstacle : MonoBehaviour
 
     private void Update()
     {
-        transform.position += Vector3.left * GameManager.Instance.gameSpeed * Time.deltaTime;
+        if (this.gameObject.tag == "Left")
+        {        
+            transform.position -= Vector3.left * GameManager.Instance.gameSpeed * Time.deltaTime;
+        }
+        if (this.gameObject.tag == "Right")
+        {
+            transform.position += Vector3.left * GameManager.Instance.gameSpeed * Time.deltaTime;
+
+        }
 
         if (transform.position.x < leftEdge) {
             Destroy(gameObject);

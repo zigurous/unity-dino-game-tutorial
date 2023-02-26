@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6884696123139720798}
   m_Layer: 0
   m_Name: Cactus_Large_Doube
-  m_TagString: Obstacle
+  m_TagString: Right
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
