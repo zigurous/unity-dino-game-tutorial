@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +16,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI hiscoreText;
     public TextMeshProUGUI gameOverText;
     public Button retryButton;
-
+    private int level = 0;
     private Player player;
     private Spawner[] spawners;
-
+    public AudioListener audioListener;
+    public AudioClip duckClip;
+    public AudioClip maazClip;
+    public AudioClip nightClip;
+    public AudioClip boomClip;
     private Vector3 startPosition = new Vector3(-6, 0, 0);
 
     private float score;
@@ -43,6 +48,10 @@ public class GameManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         spawners = FindObjectsOfType<Spawner>();
+        maazClip = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Sound/maaz.mp3");
+        nightClip = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Sound/night.mp3");
+        boomClip = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Sound/boom.mp3");
+        audioListener = Camera.main.GetComponent<AudioListener>();
 
         NewGame();
     }
@@ -87,6 +96,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        audioListener.GetComponent<AudioSource>().clip = boomClip;
+        // Play the new audio clip
+        audioListener.GetComponent<AudioSource>().Play();
+        level = 0;
         gameSpeed = 0f;
         enabled = false;
 
@@ -98,18 +111,28 @@ public class GameManager : MonoBehaviour
         }
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
-
+        
         UpdateHiscore();
     }
 
     private void Update()
     {
+        
+
         gameSpeed += gameSpeedIncrease * Time.deltaTime;
         score += gameSpeed * Time.deltaTime * 2f;
         scoreText.text = Mathf.FloorToInt(score).ToString("D5");
-
+        
         if (score >= 100)
         {
+            if (level < 1)
+            {
+                // Set the new audio clip
+                audioListener.GetComponent<AudioSource>().clip = maazClip;
+                // Play the new audio clip
+                audioListener.GetComponent<AudioSource>().Play();
+                level = 1;
+            }
             for (int i = 0; i < spawners.Length; i++)
             {
                 for (int j = 0; j < spawners[i].objects.Length; j++)
@@ -123,6 +146,14 @@ public class GameManager : MonoBehaviour
         }
         if (score >= 200)
         {
+            if (level < 2)
+            {
+                // Set the new audio clip
+                audioListener.GetComponent<AudioSource>().clip = nightClip;
+                // Play the new audio clip
+                audioListener.GetComponent<AudioSource>().Play();
+                level = 2;
+            }
             for (int i = 0; i < spawners.Length; i++)
             {
                 for (int j = 0; j < spawners[i].objects.Length; j++)
