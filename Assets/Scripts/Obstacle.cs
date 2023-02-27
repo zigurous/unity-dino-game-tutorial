@@ -27,11 +27,11 @@ public class Obstacle : MonoBehaviour
         {
             transform.position += new Vector3(-1.5f, -1, 0) * GameManager.Instance.gameSpeed * Time.deltaTime;
         }
-        
+        /*
         if (transform.position.x < leftEdge || transform.position.x > rightEdge 
             || transform.position.y < downEdge) {
             Destroy(gameObject);
-        }
+        }*/
     }
 
 }

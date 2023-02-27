@@ -68,19 +68,7 @@ public class GameManager : MonoBehaviour
         gameSpeed = initialGameSpeed;
         enabled = true;
 
-        for (int i = 0; i < spawners.Length; i++)
-        {
-            for (int j = 0; j < spawners[i].objects.Length; j++)
-            {
-                if (spawners[i].objects[j].prefab.name == "Bird" ||
-                    spawners[i].objects[j].prefab.name == "Meteor" ||
-                    spawners[i].objects[j].prefab.name == "Meteorite_01")
-                {
-                    spawners[i].objects[j].spawnChance = 0f;
-                }
-                
-            }
-        }
+        ConfigLevel0();
 
         player.gameObject.SetActive(true);
         foreach (Spawner spawner in spawners)
@@ -133,16 +121,8 @@ public class GameManager : MonoBehaviour
                 audioListener.GetComponent<AudioSource>().Play();
                 level = 1;
             }
-            for (int i = 0; i < spawners.Length; i++)
-            {
-                for (int j = 0; j < spawners[i].objects.Length; j++)
-                {
-                    if (spawners[i].objects[j].prefab.name == "Bird")
-                    {
-                        spawners[i].objects[j].spawnChance = 0.2f;
-                    }
-                }
-            }
+            ConfigLevel1();
+            ConfigLevel5();
         }
         if (score >= 200)
         {
@@ -154,24 +134,73 @@ public class GameManager : MonoBehaviour
                 audioListener.GetComponent<AudioSource>().Play();
                 level = 2;
             }
-            for (int i = 0; i < spawners.Length; i++)
-            {
-                for (int j = 0; j < spawners[i].objects.Length; j++)
-                {
-                    if (spawners[i].objects[j].prefab.name == "Meteor")
-                    {
-                        spawners[i].objects[j].spawnChance = 0.16f;
-                    }
-                    if (spawners[i].objects[j].prefab.name == "Meteorite_01")
-                    {
-                        spawners[i].objects[j].spawnChance = 0.2f;
-                    }
-                }
-            }
+            ConfigLevel2();
 
         }
 
 
+    }
+
+    private void ConfigLevel1()
+    {
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            for (int j = 0; j < spawners[i].objects.Length; j++)
+            {
+                if (spawners[i].objects[j].prefab.name == "Bird")
+                {
+                    spawners[i].objects[j].spawnChance = 0.2f;
+                }
+            }
+        }
+    }
+
+    private void ConfigLevel2()
+    {
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            for (int j = 0; j < spawners[i].objects.Length; j++)
+            {
+                if (spawners[i].objects[j].prefab.name == "Meteor")
+                {
+                    spawners[i].objects[j].spawnChance = 0.16f;
+                }
+                if (spawners[i].objects[j].prefab.name == "Meteorite_01")
+                {
+                    spawners[i].objects[j].spawnChance = 0.2f;
+                }
+            }
+        }
+    }
+
+    private void ConfigLevel5()
+    {
+        Camera.main.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        Camera.main.transform.position = new Vector3(0, 2, 10);
+        var ground = GameObject.Find("Ground");
+        ground.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+    }
+
+    private void ConfigLevel0()
+    {
+        Camera.main.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        Camera.main.transform.position = new Vector3(0, 2, -10);
+        var ground = GameObject.Find("Ground");
+        ground.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            for (int j = 0; j < spawners[i].objects.Length; j++)
+            {
+                if (spawners[i].objects[j].prefab.name == "Bird" ||
+                    spawners[i].objects[j].prefab.name == "Meteor" ||
+                    spawners[i].objects[j].prefab.name == "Meteorite_01")
+                {
+                    spawners[i].objects[j].spawnChance = 0f;
+                }
+
+            }
+        }
     }
 
     private void UpdateHiscore()
