@@ -1,9 +1,9 @@
-# Project Title
+# Dino Game (2D)
 
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh elit, iaculis id condimentum vitae, efficitur nec lorem. Nam convallis ligula vitae velit porta interdum. Donec euismod sem ligula, aliquet lacinia eros mollis molestie. Maecenas et enim mollis lacus ultrices consequat. Quisque vehicula id neque sit amet placerat. Etiam posuere vel ipsum vel tincidunt. Nulla et efficitur urna. Phasellus varius gravida velit non commodo. Vivamus sagittis commodo nibh vitae posuere.
+> The Dinosaur Game is a browser game developed by Google and built into the Google Chrome web browser. The player guides a pixelated Tyrannosaurus rex across a side-scrolling landscape, avoiding obstacles to achieve a higher score. The game was created by members of the Chrome UX team in 2014.
 
-- **Difficulty**:
-- **Topics**:
-- **Version**:
-- [**Download**](https://github.com/zigurous/unity-tutorial-template/archive/refs/heads/main.zip)
+- **Difficulty**: Beginner
+- **Topics**: Side Scrolling, Infinite Generation, Hiscores
+- **Version**: Unity 2021.3 (LTS)
+- [**Download**](https://github.com/zigurous/unity-dino-game-tutorial/archive/refs/heads/main.zip)
 - [**Watch Video**](https://www.youtube.com/c/zigurous)
