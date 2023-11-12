@@ -11,7 +11,6 @@ public class Spawner : MonoBehaviour
     }
 
     public SpawnableObject[] objects;
-
     public float minSpawnRate = 1f;
     public float maxSpawnRate = 2f;
 
