@@ -11,14 +11,13 @@ public class GameManager : MonoBehaviour
     public float gameSpeedIncrease = 0.1f;
     public float gameSpeed { get; private set; }
 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI hiscoreText;
-    public TextMeshProUGUI gameOverText;
-    public Button retryButton;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI hiscoreText;
+    [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private Button retryButton;
 
     private Player player;
     private Spawner spawner;
-
     private float score;
 
     private void Awake()

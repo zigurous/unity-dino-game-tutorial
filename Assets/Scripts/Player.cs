@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        direction += Vector3.down * gravity * Time.deltaTime;
+        direction += gravity * Time.deltaTime * Vector3.down;
 
         if (character.isGrounded)
         {
