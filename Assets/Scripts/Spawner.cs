@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
     {
         float spawnChance = Random.value;
 
-        foreach (var obj in objects)
+        foreach (SpawnableObject obj in objects)
         {
             if (spawnChance < obj.spawnChance)
             {
